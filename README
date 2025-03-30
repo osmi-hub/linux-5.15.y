@@ -16,3 +16,19 @@ several of them using the Restructured Text markup notation.
 Please read the Documentation/process/changes.rst file, as it contains the
 requirements for building and running the kernel, and information about
 the problems which may result by upgrading your kernel.
+
+启用CAN内核
+增加config-5.15编译配置
+修改meson-gx-p23x-q20x.dtsi配置:
+    /* Wireless SDIO Module */
+   	    max-frequency = <40000000>;
+    /* SD card */
+	    max-frequency = <50000000>;
+    /* eMMC */
+	    max-frequency = <100000000>;
+删除原有的rtl8822cs无线驱动，改用RTW88无线驱动
+适配的型号：
+PCIe: RTL8723DE, RTL8821CE, RTL8822BE, RTL8822CE, RTL8814AE
+SDIO: RTL8723CS, RTL8723DS, RTL8821CS, RTL8822BS, RTL8822CS
+USB : RTL8723DU, RTL8811AU, RTL8811CU, RTL8812AU, RTL8812BU, RTL8812CU
+USB : RTL8814AU, RTL8821AU, RTL8821CU, RTL8822BU, RTL8822CU
